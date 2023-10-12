@@ -14,6 +14,10 @@ import com.alexbalmus.jpapractice.Book;
     query="from Book where title like :title order by title")
 class Queries
 {
+    private Queries()
+    {
+    }
+
     static List<Book> findBooksByTitleWithPagination(Session session, String titlePattern, Page page)
     {
         return session.createNamedQuery("findBooksByTitle", Book.class)

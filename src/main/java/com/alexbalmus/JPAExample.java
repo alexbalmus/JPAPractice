@@ -25,15 +25,11 @@ public class JPAExample
 
         // persist an entity
         inSession(factory, entityManager ->
-        {
-            entityManager.persist(new Book("9781932394153", "Hibernate in Action"));
-        });
+            entityManager.persist(new Book("9781932394153", "Hibernate in Action")));
 
         // query data using HQL
         inSession(factory, entityManager ->
-        {
-            out.println(entityManager.createQuery("select isbn||': '||title from Book").getSingleResult());
-        });
+            out.println(entityManager.createQuery("select isbn||': '||title from Book").getSingleResult()));
 
         // query data using criteria API
         inSession(factory, entityManager ->
@@ -41,8 +37,12 @@ public class JPAExample
             var builder = factory.getCriteriaBuilder();
             var query = builder.createQuery(String.class);
             var book = query.from(Book.class);
-            query.select(builder.concat(builder.concat(book.get(Book_.isbn), builder.literal(": ")),
-                book.get(Book_.title)));
+            query.select(
+                builder.concat(
+                    builder.concat(book.get(Book_.isbn), builder.literal(": ")),
+                    book.get(Book_.title)
+                )
+            );
             out.println(entityManager.createQuery(query).getSingleResult());
         });
     }

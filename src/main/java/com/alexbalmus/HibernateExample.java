@@ -37,15 +37,11 @@ public class HibernateExample
 
         // persist an entity
         sessionFactory.inTransaction(session ->
-        {
-            session.persist(new Book("9781932394153", "Hibernate in Action"));
-        });
+            session.persist(new Book("9781932394153", "Hibernate in Action")));
 
         // query data using HQL
         sessionFactory.inSession(session ->
-        {
-            out.println(session.createSelectionQuery("select isbn||': '||title from Book").getSingleResult());
-        });
+            out.println(session.createSelectionQuery("select isbn||': '||title from Book").getSingleResult()));
 
         // query data using criteria API
         sessionFactory.inSession(session ->

@@ -53,15 +53,11 @@ public class BookResource
 
         // persist an entity
         sessionFactory.inTransaction(session ->
-        {
-            session.persist(new Book(UUID.randomUUID().toString(), "Hibernate in Action"));
-        });
+            session.persist(new Book(UUID.randomUUID().toString(), "Hibernate in Action")));
 
         // query data using HQL
         sessionFactory.inSession(session ->
-        {
-            out.println(session.createSelectionQuery("select isbn||': '||title from Book").getResultList());
-        });
+            out.println(session.createSelectionQuery("select isbn||': '||title from Book").getResultList()));
     }
 
     @GET
@@ -109,6 +105,5 @@ public class BookResource
                 Page.page(RESULTS_PER_PAGE, page)));
         return books.isEmpty() ? Response.status(404).build() : Response.ok(books).build();
     }
-
 
 }

@@ -11,6 +11,7 @@ import static org.hibernate.cfg.AvailableSettings.USER;
 
 import org.hibernate.cfg.Configuration;
 
+import com.alexbalmus.jpapractice.Author;
 import com.alexbalmus.jpapractice.Book;
 import com.alexbalmus.jpapractice.Book_;
 
@@ -20,6 +21,7 @@ public class HibernateExample
     {
         var sessionFactory = new Configuration()
             .addAnnotatedClass(Book.class)
+            .addAnnotatedClass(Author.class)
             // use H2 in-memory database
             .setProperty(URL, "jdbc:h2:mem:db1")
             .setProperty(USER, "sa")

@@ -3,23 +3,30 @@
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0">
     <persistence-unit name="com.alexbalmus.jpapractice">
+
         <class>com.alexbalmus.jpapractice.Book</class>
+        <class>com.alexbalmus.jpapractice.Author</class>
+
         <properties>
             <!-- H2 in-memory database -->
-            <property name="jakarta.persistence.jdbc.url"
-                      value="jdbc:h2:mem:db1"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:db1"/>
+
             <!-- Credentials -->
-            <property name="jakarta.persistence.jdbc.user"
-                      value="sa"/>
-            <property name="jakarta.persistence.jdbc.password"
-                      value=""/>
+            <property name="jakarta.persistence.jdbc.user" value="sa"/>
+            <property name="jakarta.persistence.jdbc.password" value=""/>
+
+            <!-- Automatic schema export -->
+<!--            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>-->
+
             <!-- Agroal connection pool -->
-            <property name="hibernate.agroal.maxSize"
-                      value="20"/>
+            <property name="hibernate.agroal.maxSize" value="20"/>
+
             <!-- display SQL in console -->
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.highlight_sql" value="true"/>
         </properties>
+
     </persistence-unit>
+
 </persistence>
